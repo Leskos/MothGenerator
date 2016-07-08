@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using PygmyMonkey;
 using SVGImporter;
 
@@ -7,14 +8,38 @@ public class MothLimb : MonoBehaviour
 {
 
 	private Moth moth;
-	private SVGRenderer[] limbShapes;
+	public List<SVGRenderer> limbShapes;
 	private int limbIndex;
 	private Color limbColor;
 
 
 	void Awake () 
 	{
-		limbShapes = gameObject.GetComponentsInChildren<SVGRenderer> ();
+
+		// Necessary for limbShapes to initialise correctly
+		foreach( GameObject childObject in gameObject.GetComponentsInChildren<GameObject>() )
+		{
+			childObject.SetActive (true);
+		}
+
+		limbShapes = new List<SVGRenderer>();
+
+		SVGRenderer[] allChildren = gameObject.GetComponentsInChildren<SVGRenderer>(  );
+
+		foreach (SVGRenderer child in allChildren ) 
+		{
+			if (child.gameObject.transform.parent.gameObject.name == gameObject.name ) 
+			{
+				Debug.Log (gameObject.name + " child - " + child.gameObject);
+				limbShapes.Add (child);
+			} 
+			else 
+			{
+				Debug.Log (gameObject.name + " INVALID - " + child.gameObject);
+			}
+
+		}
+
 		randomiseShape ();
 	}
 
@@ -30,7 +55,7 @@ public class MothLimb : MonoBehaviour
 		{
 			limb.gameObject.SetActive (false);
 		}
-		limbShapes [ shapeIndex % limbShapes.Length ].gameObject.SetActive (true);
+	    limbShapes[ shapeIndex % limbShapes.Count ].gameObject.SetActive (true);
 	}
 
 	public void setColour( Color newColour )
@@ -43,7 +68,7 @@ public class MothLimb : MonoBehaviour
 
 	public void randomiseShape()
 	{
-		int activeLimb = Random.Range (0, limbShapes.Length);
+		int activeLimb = Random.Range (0, limbShapes.Count);
 
 		foreach( SVGRenderer limb in limbShapes )
 		{

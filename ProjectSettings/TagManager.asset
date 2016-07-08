@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Legs
+    uniqueID: 637768149
+    locked: 0
+  - name: BodyColour
+    uniqueID: 1055619439
+    locked: 0
+  - name: Body
+    uniqueID: 1911615227
+    locked: 0
+  - name: WingColour
+    uniqueID: 2066353959
+    locked: 0
+  - name: Wing
+    uniqueID: 2842977331
+    locked: 0

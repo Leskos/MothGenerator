@@ -30,12 +30,12 @@ public class MothLimb : MonoBehaviour
 		{
 			if (child.gameObject.transform.parent.gameObject.name == gameObject.name ) 
 			{
-				Debug.Log (gameObject.name + " child - " + child.gameObject);
+				//Debug.Log (gameObject.name + " child - " + child.gameObject);
 				limbShapes.Add (child);
 			} 
 			else 
 			{
-				Debug.Log (gameObject.name + " INVALID - " + child.gameObject);
+				//Debug.Log (gameObject.name + " INVALID - " + child.gameObject);
 			}
 
 		}

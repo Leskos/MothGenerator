@@ -5,9 +5,6 @@ using SVGImporter;
 
 public class Moth : MonoBehaviour 
 {
-	
-
-
 	public enum BodyParts
 	{
 		BODY,
@@ -25,32 +22,12 @@ public class Moth : MonoBehaviour
 		WING_COLOUR_LEFT,
 		WING_COLOUR_RIGHT
 	}
-
 	public MothLimb[] bodyParts = new MothLimb[ System.Enum.GetValues (typeof(BodyParts)).Length ];
-
-
 	public string paletteName;
 
-	// Use this for initialization
+
 	void Start () 
 	{
-		/*
-		bodyParts [ (int)BodyParts.HEAD              ] = transform.FindChild ( "Head"              ).gameObject.GetComponent<MothLimb>();
-		bodyParts [ (int)BodyParts.ANTENNA           ] = transform.FindChild ( "Antenna"           ).gameObject.GetComponent<MothLimb>();
-		bodyParts [ (int)BodyParts.BODY              ] = transform.FindChild ( "Body"              ).gameObject.GetComponent<MothLimb>();
-		bodyParts [ (int)BodyParts.BODY_COLOUR       ] = transform.FindChild ( "Body Colour"       ).gameObject.GetComponent<MothLimb>();
-		bodyParts [ (int)BodyParts.LEG_TOP_LEFT      ] = transform.FindChild ( "Leg Top Left"      ).gameObject.GetComponent<MothLimb>();
-		bodyParts [ (int)BodyParts.LEG_TOP_RIGHT     ] = transform.FindChild ( "Leg Top Right"     ).gameObject.GetComponent<MothLimb>();
-		bodyParts [ (int)BodyParts.LEG_MID_LEFT      ] = transform.FindChild ( "Leg Mid Left"      ).gameObject.GetComponent<MothLimb>();
-		bodyParts [ (int)BodyParts.LEG_MID_RIGHT     ] = transform.FindChild ( "Leg Mid Right"     ).gameObject.GetComponent<MothLimb>();
-		bodyParts [ (int)BodyParts.LEG_BOTTOM_LEFT   ] = transform.FindChild ( "Leg Bottom Left"   ).gameObject.GetComponent<MothLimb>();
-		bodyParts [ (int)BodyParts.LEG_BOTTOM_RIGHT  ] = transform.FindChild ( "Leg Bottom Right"  ).gameObject.GetComponent<MothLimb>();
-		bodyParts [ (int)BodyParts.WING_LEFT         ] = transform.FindChild ( "Wing Left"         ).gameObject.GetComponent<MothLimb>();
-		bodyParts [ (int)BodyParts.WING_RIGHT        ] = transform.FindChild ( "Wing Right"        ).gameObject.GetComponent<MothLimb>();
-		bodyParts [ (int)BodyParts.WING_COLOUR_LEFT  ] = transform.FindChild ( "Wing Colour Left"  ).gameObject.GetComponent<MothLimb>();
-		bodyParts [ (int)BodyParts.WING_COLOUR_RIGHT ] = transform.FindChild ( "Wing Colour Right" ).gameObject.GetComponent<MothLimb>();
-		*/
-
 		foreach( MothLimb limb in bodyParts )
 		{
 			limb.setMothReference( this );
@@ -60,6 +37,7 @@ public class Moth : MonoBehaviour
 		randomiseShapes ();
 		randomiseColours ();
 	}
+
 
 	void Update()
 	{
@@ -95,16 +73,9 @@ public class Moth : MonoBehaviour
 		}
 	}
 
+
 	public void randomiseColours()
 	{
-		/*
-		foreach( MothLimb limb in bodyParts )
-		{
-			//limb.randomiseColour ();
-			limb.setColour( getRandomColour() );
-		}
-		*/
-
 		Color colour1 = getRandomColour();
 		Color colour2 = getRandomColour();
 		Color colour3 = getRandomColour();
@@ -125,6 +96,7 @@ public class Moth : MonoBehaviour
 		bodyParts [ (int)BodyParts.WING_COLOUR_LEFT  ].setColour( colour2 );
 		bodyParts [ (int)BodyParts.WING_COLOUR_RIGHT ].setColour( colour2 );
 	}
+
 
 	public void randomisePalette()
 	{
